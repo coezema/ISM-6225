@@ -2,10 +2,6 @@
 	Date: 09/10/2019
 */
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ISM_6225_WorkExp
 {
@@ -32,9 +28,9 @@ namespace ISM_6225_WorkExp
 				{
 					Console.WriteLine("Looks like you have a little experience");
 				}
-				else if(exp == 2)
+				else
 				{
-					Console.WriteLine("Need lots of practice");
+					Console.WriteLine("Need lots of practices");
 				}
 			}
 			catch
