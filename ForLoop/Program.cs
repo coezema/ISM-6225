@@ -10,24 +10,30 @@ namespace ForLoop
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Years of exp?");
-			string input = Console.ReadLine();
-			int exp = int.Parse(input);
-
-			for (int i = 0; i <= exp;i++)
+			try
 			{
-				if (i < 1)
-				{
-					Console.WriteLine("You have " + i + " year of experience");
-				}
-				else
-				{
-					Console.WriteLine("You have " + i + " years of experience");
-				}
-			}
-			Console.Write("Please press key to end program");
-			Console.ReadKey(true);
+				Console.WriteLine("Years of exp?");
+				string input = Console.ReadLine();
+				int exp = int.Parse(input);
 
+				for (int i = 0; i <= exp; i++)
+				{
+					if (i <= 1)
+					{
+						Console.WriteLine("You have " + i + " year of experience");
+					}
+					else
+					{
+						Console.WriteLine("You have " + i + " years of experience");
+					}
+				}
+				Console.Write("Please press key to end program");
+				Console.ReadKey(true);
+			}
+			catch
+			{
+				Console.Write("Please enter an integer");
+			}
 		}
 	}
 }
