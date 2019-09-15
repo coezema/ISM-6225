@@ -13,10 +13,10 @@ namespace Assignment1_C.Ezema
 			int a = 1, b = 22;
 			printSelfDividingNumbers(a, b);
 
-			/*int n2 = 5;
+			int n2 = 5;
 			printSeries(n2);
 
-			int n3 = 5;
+			/*int n3 = 5;
 			printTriangle(n3);
 
 			int[] J = new int[] { 1, 3 };
@@ -32,7 +32,6 @@ namespace Assignment1_C.Ezema
 			solvePuzzle();
 			*/
 		}
-
 
 		// 
 		static bool isSelfDividing(int n)
@@ -76,7 +75,8 @@ namespace Assignment1_C.Ezema
 				{
 					// do nothing
 				}
-
+				Console.WriteLine("Question 1\n");
+				Console.WriteLine("The self-dividing number(s) between "+x.ToString()+" & "+ y.ToString()+" are:");
 				while (x <= y)
 				{
 					if (isSelfDividing(x))
@@ -94,7 +94,33 @@ namespace Assignment1_C.Ezema
 			{
 				Console.WriteLine("Exception occured while computing printSelfDividingNumbers()");
 			}
-			
+		Console.WriteLine("\n\n\nQuestion 2\n");
+		}
+		public static void printSeries(int n)
+		{
+			/*
+			* n – number of lines for the pattern, integer (int)
+			* 
+			* summary      : This method prints an inverted triangle using *
+			* For example n = 5 will display the output as: 
+			*********
+			 *******
+			  *****
+			   ***
+				*
+
+			*
+			* returns      : N/A
+			* return type  : void
+			*/
+			Console.WriteLine("Inverted triangle series:\n");
+			while (n > 0)
+			{
+				string invTri = new string('*', n);
+				Console.WriteLine(invTri);
+				n--;
+			}
+
 			Console.WriteLine("\n\nPlease press key to end program");
 			Console.ReadKey(true);
 		}
