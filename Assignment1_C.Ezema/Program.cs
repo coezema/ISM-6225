@@ -27,10 +27,11 @@ namespace Assignment1_C.Ezema
 			Console.WriteLine(r4);
 
 			Console.WriteLine("\n\nQuestion 5\n\nLargest Common Array:");
-			int[] arr1 = new int[] { 1, 2, 5, 6, 7, 8, 9 };
-			int[] arr2 = new int[] { 1, 2, 3, 4, 5 };
+			//a = [1, 2, 3, 4, 5, 6, 7, 8, 9], b = [1, 2, 5, 7, 8, 9, 10]
+			int[] arr1 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13 };
+			int[] arr2 = new int[] { 1, 2, 5, 7, 8, 9, 10, 11, 12, 13 };
 			int[] r5 = getLargestCommonSubArray(arr1, arr2);
-			Console.WriteLine(r5);
+			//displayArray(r5);
 			Console.WriteLine("\n\nPlease press key to end program");
 			Console.ReadKey(true);
 
@@ -224,13 +225,84 @@ namespace Assignment1_C.Ezema
             return 0;
         }
 
-        public static int[] getLargestCommonSubArray(int[] a, int[] b)
+		/*public static void displayArray(int[] ans)
+		{
+			foreach (int element in ans)
+			{
+				Console.Write(element);
+			}
+		}*/
+		public static int[] getLargestCommonSubArray(int[] a, int[] b)
         {
             try
             {
-                // Write your code here
-            }
-            catch
+				/*
+				* a – array of elements, integer (int)
+				* 
+				* summary      : This method finds the largest common contiguous subarray from two 
+				* sorted arrays. The given arrays are sorted in ascending order. If there are multiple 
+				* arrays with the same length, then return the last array having the maximum length.
+				* The function should return the array.
+				* For example:
+				* a = [1,2,5,6,7,8,9], b = [1,2,3,4,5] will return the output: 
+				* [1,2]
+				* and
+				* a = [1,2,3,4,5,6,7,8,9], b = [1,2,5,7,8,9,10] will return the output: 
+				* [7,8,9]
+				* and
+				* a = [1,2,3,4,5,6], b = [1,2,5,6,7,8,9] will return the output: 
+				* [5,6]
+				*
+				* returns      : Array of integers
+				* return type  : int[]
+				*/
+				// Write your code here
+				List<int> tempArr = new List<int>();
+				List<int> result = new List<int>();
+				if (a.Length < 1 || b.Length < 1)
+				{
+					return new int[0];
+				}
+				else
+				{
+					for (int ai = 0; ai < a.Length; ai++)
+					{
+						int pNum = a[ai];
+						for (int bi = 0; bi < b.Length; bi++)
+						{
+							if (pNum == b[bi])
+							{
+								tempArr.Add(pNum);
+							}
+							else
+							{
+								//
+							}
+						}
+					}
+					for (int ti = 1; ti<tempArr.Count;)
+					{
+						
+						if (tempArr[ti]-tempArr[ti -1]>1)
+						{
+							tempArr.RemoveAt(ti-1);
+							ti = 1;
+						}
+						else
+						{
+							ti++;
+						}
+					}
+					Console.WriteLine();
+					foreach (int element in tempArr)
+					{
+						Console.Write(element+" ");
+					}
+					Console.WriteLine("\nEnd of program");
+					Console.ReadKey();
+				}
+			}
+			catch
             {
                 Console.WriteLine("Exception occured while computing getLargestCommonSubArray()");
             }
