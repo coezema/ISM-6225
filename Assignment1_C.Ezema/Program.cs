@@ -27,11 +27,10 @@ namespace Assignment1_C.Ezema
 			Console.WriteLine(r4);
 
 			Console.WriteLine("\n\nQuestion 5\n\nLargest Common Array:");
-			//a = [1, 2, 3, 4, 5, 6, 7, 8, 9], b = [1, 2, 5, 7, 8, 9, 10]
-			int[] arr1 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13 };
-			int[] arr2 = new int[] { 1, 2, 5, 7, 8, 9, 10, 11, 12, 13 };
+			int[] arr1 = new int[] { 1, 2, 3, 4, 5, 6 };
+			int[] arr2 = new int[] { 1, 2, 5, 6, 7, 8, 9 };
 			int[] r5 = getLargestCommonSubArray(arr1, arr2);
-			//displayArray(r5);
+			displayArray(r5);
 			Console.WriteLine("\n\nPlease press key to end program");
 			Console.ReadKey(true);
 
@@ -225,13 +224,13 @@ namespace Assignment1_C.Ezema
             return 0;
         }
 
-		/*public static void displayArray(int[] ans)
+		public static void displayArray(int[] ans)
 		{
 			foreach (int element in ans)
 			{
-				Console.Write(element);
+				Console.Write(element+" ");
 			}
-		}*/
+		}
 		public static int[] getLargestCommonSubArray(int[] a, int[] b)
         {
             try
@@ -257,8 +256,7 @@ namespace Assignment1_C.Ezema
 				* return type  : int[]
 				*/
 				// Write your code here
-				List<int> tempArr = new List<int>();
-				List<int> result = new List<int>();
+				List<int> contSubArr = new List<int>();
 				if (a.Length < 1 || b.Length < 1)
 				{
 					return new int[0];
@@ -270,9 +268,9 @@ namespace Assignment1_C.Ezema
 						int pNum = a[ai];
 						for (int bi = 0; bi < b.Length; bi++)
 						{
-							if (pNum == b[bi])
+							if (pNum == b[bi]&& b.Contains(pNum+1))
 							{
-								tempArr.Add(pNum);
+								contSubArr.Add(pNum);
 							}
 							else
 							{
@@ -280,12 +278,12 @@ namespace Assignment1_C.Ezema
 							}
 						}
 					}
-					for (int ti = 1; ti<tempArr.Count;)
+					for (int ti = 1; ti<contSubArr.Count;)
 					{
 						
-						if (tempArr[ti]-tempArr[ti -1]>1)
+						if (contSubArr[ti] - contSubArr[ti - 1] > 1)
 						{
-							tempArr.RemoveAt(ti-1);
+							contSubArr.RemoveAt(ti-1);
 							ti = 1;
 						}
 						else
@@ -293,13 +291,7 @@ namespace Assignment1_C.Ezema
 							ti++;
 						}
 					}
-					Console.WriteLine();
-					foreach (int element in tempArr)
-					{
-						Console.Write(element+" ");
-					}
-					Console.WriteLine("\nEnd of program");
-					Console.ReadKey();
+					return contSubArr.ToArray();
 				}
 			}
 			catch
