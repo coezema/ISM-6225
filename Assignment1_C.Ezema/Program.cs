@@ -16,179 +16,198 @@ namespace Assignment1_C.Ezema
 	{
 		static void Main(string[] args)
 		{
-			// Display title as the C# console calculator app.
-			Console.WriteLine("ISM6225 Assignment 1 C#\r");
-			Console.WriteLine("------------------------\n");
-
-			// Ask the user to choose an option.
-			Console.WriteLine("Choose an option from the following list:");
-			Console.WriteLine("\t1 - Self Dividing Number");
-			Console.WriteLine("\t2 - Series");
-			Console.WriteLine("\t3 - Triangle");
-			Console.WriteLine("\t4 - Jewels in Stones");
-			Console.WriteLine("\t5 - Largest Common Sub Array");
-			Console.WriteLine("\t6 - Uber + Cool = Uncle");
-			Console.Write("Your selection? ");
-
-			// Use a switch statement to run user selection.
-			switch (Console.ReadLine())
+			bool done = false;
+			while (!done)
 			{
-				case "1":
-					//Explain self dividing to the user
-					Console.WriteLine("\n\n\tSummary: This finds all the self dividing numbers between user specified range\n\n");
-					int fnum = 0; int snum2 = 0;
-					// Ask the user to type the first number.
-					while (true)
-					{
-						try
+				Console.WriteLine("ISM6225 Assignment 1 C#\r");
+				Console.WriteLine("------------------------\n");
+
+				// Ask the user to choose an option.
+				Console.WriteLine("Choose an option from the following list:");
+				Console.WriteLine("\t1 - Self Dividing Number");
+				Console.WriteLine("\t2 - Series");
+				Console.WriteLine("\t3 - Triangle");
+				Console.WriteLine("\t4 - Jewels in Stones");
+				Console.WriteLine("\t5 - Largest Common Sub Array");
+				Console.WriteLine("\t6 - Uber + Cool = Uncle");
+				Console.Write("Your selection? ");
+
+				// Use a switch statement to run user selection.
+				switch (Console.ReadLine())
+				{
+					case "1":
+						//Explain self dividing to the user
+						Console.WriteLine("\n\n\tSummary: This finds all the self dividing numbers between user specified range\n\n");
+						int fnum = 0; int snum2 = 0;
+						// Ask the user to type the first number.
+						while (true)
 						{
-							Console.WriteLine("Enter the first number in the range, and then press Enter");
-							fnum = int.Parse(Console.ReadLine());
+							try
+							{
+								Console.WriteLine("Enter the first number in the range, and then press Enter");
+								fnum = int.Parse(Console.ReadLine());
+							}
+							catch
+							{
+								Console.Write("\nYou must enter a whole number.\n");
+								continue;
+							}
+							break;
 						}
-						catch
+						// Ask the user to type the second number.
+						while (true)
 						{
-							Console.Write("\nYou must enter a whole number.\n");
-							continue;
+							try
+							{
+								Console.WriteLine("Enter second number, and then press Enter");
+								snum2 = int.Parse(Console.ReadLine());
+							}
+							catch
+							{
+								Console.Write("\nYou must enter a whole number.\n");
+								continue;
+							}
+							break;
 						}
+						printSelfDividingNumbers(fnum, snum2);
 						break;
-					}
-					// Ask the user to type the second number.
-					while (true)
-					{
-						try
+					case "2":
+						//Explain Print Series to the user
+						Console.WriteLine(
+								"\n\n\tSummary: This prints the following series till n terms: \n " +
+								"\t1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6 …. n terms\n\n" +
+								"\tFor example, if n = 5, output will be:\n\n" +
+								"\t[1, 2, 2, 3, 3]\n\n");
+						int series = 0;
+						// Ask the user to type the n terms and verify its a number not string.
+						while (true)
 						{
-							Console.WriteLine("Enter second number, and then press Enter");
-							snum2 = int.Parse(Console.ReadLine());
+							try
+							{
+								Console.WriteLine("Type the n terms for the series, and then press Enter");
+								series = int.Parse(Console.ReadLine());
+							}
+							catch
+							{
+								Console.Write("\nYou must enter a whole number.\n");
+								continue;
+							}
+							break;
 						}
-						catch
-						{
-							Console.Write("\nYou must enter a whole number.\n");
-							continue;
-						}
+						printSeries(series);
 						break;
-					}
-					printSelfDividingNumbers(fnum, snum2);
-					break;
-				case "2":
-					//Explain Print Series to the user
-					Console.WriteLine(
-							"\n\n\tSummary: This prints the following series till n terms: \n " +
-							"\t1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6 …. n terms\n\n" +
-							"\tFor example, if n = 5, output will be:\n\n" +
-							"\t[1, 2, 2, 3, 3]\n\n");
-					int series = 0;
-					// Ask the user to type the n terms and verify its a number not string.
-					while (true)
-					{
-						try
+					case "3":
+						//Explain Print Triangle to the user
+						Console.WriteLine(
+							"\n\n\tSummary: This prints an inverted triangle using *\n" +
+							"\tFor example n = 5 will display the output as: \n\n" +
+							"\t	*********	\n" +
+							"\t	 *******	\n" +
+							"\t	  *****	\n" +
+							"\t	   ***	\n" +
+							"\t\t    *	");
+						int tri = 0;
+						// Ask the user to type the n number and verify that they entered a number not a string.
+						while (true)
 						{
-							Console.WriteLine("Type the n terms for the series, and then press Enter");
-							series = int.Parse(Console.ReadLine());
+							try
+							{
+								Console.WriteLine("Type the number n for inverted triangle, and then press Enter");
+								tri = int.Parse(Console.ReadLine());
+							}
+							catch
+							{
+								Console.Write("\nYou must enter a whole number.\n");
+								continue;
+							}
+							break;
 						}
-						catch
-						{
-							Console.Write("\nYou must enter a whole number.\n");
-							continue;
-						}
+						printTriangle(tri);
 						break;
-					}
-					printSeries(series);
-					break;
-				case "3":
-					//Explain Print Triangle to the user
-					Console.WriteLine(
-						"\n\n\tSummary: This prints an inverted triangle using *\n" +
-						"\tFor example n = 5 will display the output as: \n\n" +
-						"\t	*********	\n" +
-						"\t	 *******	\n" +
-						"\t	  *****	\n" +
-						"\t	   ***	\n" +
-						"\t\t    *	");
-					int tri = 0;
-					// Ask the user to type the n number and verify that they entered a number not a string.
-					while (true)
-					{
-						try
-						{
-							Console.WriteLine("Type the number n for inverted triangle, and then press Enter");
-							tri = int.Parse(Console.ReadLine());
-						}
-						catch
-						{
-							Console.Write("\nYou must enter a whole number.\n");
-							continue;
-						}
+					case "4":
+						//Explain Print Jewels in Stones to the user
+						Console.WriteLine(
+							"\n\n\tSummary: You're given an array J representing the types of stones that are jewels, " +
+							"\n\tand S representing the stones you have." +
+							"\tEach element in S is a type of stone you have.\n" +
+							"\tYou want to know how many of the stones you have are also jewels." +
+							" The elements in J are guaranteed distinct.\n" +
+							"\tFor Example: \n" +
+							"\tJ = [1, 3], S = [1, 3, 3, 2, 2, 2, 2, 2] will return the output:\n" +
+							"\t3(since 1, 3, 3 are jewels)\n" +
+							"\tand\n" +
+							"\tJ = [2], S = [0, 0] will return the output:\n" +
+							"\t0\n\n");
+						Console.WriteLine("\t This program will run\n " +
+							"\tJ = {1,3}\n" +
+							"\tS = {1, 3, 3, 2, 2, 2, 2, 2}\n\n");
+						Console.WriteLine("Press any key to continue...");
+						Console.ReadKey(true);
+
+						int[] Jewels = new int[] { 1, 3 };
+						int[] Stones = new int[] { 1, 3, 3, 2, 2, 2, 2, 2 };
+						int JS = numJewelsInStones(Jewels, Stones);
+						Console.WriteLine("\n\n\tAns: ");
+						Console.WriteLine("\tCount of Stones in Jewels = {0}", JS);
 						break;
-					}
-					printTriangle(tri);
-					break;
-				case "4":
-					//Explain Print Jewels in Stones to the user
-					Console.WriteLine(
-						"\n\n\tSummary: You're given an array J representing the types of stones that are jewels, " +
-						"\n\tand S representing the stones you have." +
-						"\tEach element in S is a type of stone you have.\n" +
-						"\tYou want to know how many of the stones you have are also jewels." +
-						" The elements in J are guaranteed distinct.\n" +
-						"\tFor Example: \n" +
-						"\tJ = [1, 3], S = [1, 3, 3, 2, 2, 2, 2, 2] will return the output:\n" +
-						"\t3(since 1, 3, 3 are jewels)\n" +
-						"\tand\n" +
-						"\tJ = [2], S = [0, 0] will return the output:\n" +
-						"\t0\n\n");
-					Console.WriteLine("\t This program will run\n " +
-						"\tJ = {1,3}\n" +
-						"\tS = {1, 3, 3, 2, 2, 2, 2, 2}\n\n");
-					Console.WriteLine("Press any key to continue...");
-					Console.ReadKey(true);
+					case "5":
 
-					int[] Jewels = new int[] { 1, 3 };
-					int[] Stones = new int[] { 1, 3, 3, 2, 2, 2, 2, 2 };
-					int JS = numJewelsInStones(Jewels, Stones);
-					Console.WriteLine("\n\n\tAns: ");
-					Console.WriteLine("\tCount of Stones in Jewels = {0}", JS);
-					break;
-				case "5":
+						//Explain get largest common sub array to the user
+						Console.WriteLine(
+							"\n\n\tSummary: This method finds the largest common contiguous subarray from two sorted arrays.\n" +
+							"\tThe given arrays are sorted in ascending order. If there are multiple arrays with the same length,\n" +
+							"\tthen return the last array having the maximum length.\n" +
+							"\tFor example:\n" +
+							"\ta = [1, 2, 5, 6, 7, 8, 9], b = [1, 2, 3, 4, 5] will return the output:\n" +
+							"\t[1, 2]\n" +
+							"\tand\n" +
+							"\ta = [1, 2, 3, 4, 5, 6, 7, 8, 9], b = [1, 2, 5, 7, 8, 9, 10] will return the output:\n" +
+							"\t[7, 8, 9]\n" +
+							"\tand\n" +
+							"\ta = [1, 2, 3, 4, 5, 6], b = [1, 2, 5, 6, 7, 8, 9] will return the output:\n" +
+							"\t[5, 6]\n");
 
-					//Explain get largest common sub array to the user
-					Console.WriteLine(
-						"\n\n\tSummary: This method finds the largest common contiguous subarray from two sorted arrays.\n" +
-						"\tThe given arrays are sorted in ascending order. If there are multiple arrays with the same length,\n" +
-						"\tthen return the last array having the maximum length.\n" +
-						"\tFor example:\n" +
-						"\ta = [1, 2, 5, 6, 7, 8, 9], b = [1, 2, 3, 4, 5] will return the output:\n" +
-						"\t[1, 2]\n" +
-						"\tand\n" +
-						"\ta = [1, 2, 3, 4, 5, 6, 7, 8, 9], b = [1, 2, 5, 7, 8, 9, 10] will return the output:\n" +
-						"\t[7, 8, 9]\n" +
-						"\tand\n" +
-						"\ta = [1, 2, 3, 4, 5, 6], b = [1, 2, 5, 6, 7, 8, 9] will return the output:\n" +
-						"\t[5, 6]\n");
+						//Set that the program will run. 
+						int[] arr1 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+						int[] arr2 = new int[] { 1, 2, 5, 7, 8, 9, 10 };
 
-					//Set that the program will run. 
-					int[] arr1 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-					int[] arr2 = new int[] { 1, 2, 5, 7, 8, 9, 10 };
+						//Informing user the set that the program will run
+						Console.WriteLine("\t\nThis program will run\n " +
+							"\tFirst Set = " + string.Join(",", arr1) +
+							"\n\tSecond Set = " + string.Join(",", arr2));
+						Console.WriteLine("\n\nPress any key to continue...");
+						Console.ReadKey(true);
 
-					//Informing user the set that the program will run
-					Console.WriteLine("\t\nThis program will run\n " +
-						"\tFirst Set = " + string.Join(",", arr1) +
-						"\n\tSecond Set = " + string.Join(",", arr2));
-					Console.WriteLine("\n\nPress any key to continue...");
-					Console.ReadKey(true);
-
-					int[] r5 = getLargestCommonSubArray(arr1, arr2);
-					Console.WriteLine("\n\nAns: ");
-					displayArray(r5);
-					break;
-				case "6":
+						int[] r5 = getLargestCommonSubArray(arr1, arr2);
+						Console.WriteLine("\n\nAns: ");
+						displayArray(r5);
+						break;
+					case "6":
 
 
-					solvePuzzle();
-					break;
+						solvePuzzle();
+						break;
+				}
+				// Wait for the user to respond before closing.
+				Console.WriteLine("\n\n ");
+
+				// Ask the user to choose an option.
+				Console.WriteLine("\n\nContinue app?:");
+				Console.WriteLine("\tY - Yes");
+				Console.WriteLine("\tN - No");
+				switch (Console.ReadLine().ToUpper())
+				{
+					case "Y":
+						done=false;
+						Console.Clear();
+						break;
+					case "N":
+						done=true;
+						break;
+				}
 			}
-			// Wait for the user to respond before closing.
-			Console.WriteLine("\n\n ");
-			Console.WriteLine("Press any key to close the Assignment app...");
+			// Display title as the C# console calculator app.
+			
 		}
 		//method to find if number is self dividing
 		static bool isSelfDividing(int n)
