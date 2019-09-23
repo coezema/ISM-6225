@@ -204,6 +204,10 @@ namespace Assignment1_C.Ezema
 					case "N":
 						done=true;
 						break;
+					default:
+						done = false;
+						Console.Clear();
+						break;
 				}
 			}
 			// Display title as the C# console calculator app.
