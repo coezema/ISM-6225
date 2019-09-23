@@ -27,7 +27,7 @@ namespace Assignment1_C.Ezema
 			Console.WriteLine("\t3 - Triangle");
 			Console.WriteLine("\t4 - Jewels in Stones");
 			Console.WriteLine("\t5 - Largest Common Sub Array");
-			Console.WriteLine("\t6 - Uber, Cool, Uncle");
+			Console.WriteLine("\t6 - Uber + Cool = Uncle");
 			Console.Write("Your selection? ");
 
 			// Use a switch statement to run user selection.
@@ -146,7 +146,7 @@ namespace Assignment1_C.Ezema
 					int[] Stones = new int[] { 1, 3, 3, 2, 2, 2, 2, 2 };
 					int JS = numJewelsInStones(Jewels, Stones);
 					Console.WriteLine("\n\n\tAns: ");
-					Console.WriteLine("\tCount of Stones in Jewels = {0}",JS);
+					Console.WriteLine("\tCount of Stones in Jewels = {0}", JS);
 					break;
 				case "5":
 
@@ -171,11 +171,11 @@ namespace Assignment1_C.Ezema
 
 					//Informing user the set that the program will run
 					Console.WriteLine("\t\nThis program will run\n " +
-						"\tFirst Set = "+ string.Join(",", arr1) +
+						"\tFirst Set = " + string.Join(",", arr1) +
 						"\n\tSecond Set = " + string.Join(",", arr2));
 					Console.WriteLine("\n\nPress any key to continue...");
 					Console.ReadKey(true);
-					
+
 					int[] r5 = getLargestCommonSubArray(arr1, arr2);
 					Console.WriteLine("\n\nAns: ");
 					displayArray(r5);
@@ -189,7 +189,6 @@ namespace Assignment1_C.Ezema
 			// Wait for the user to respond before closing.
 			Console.WriteLine("\n\n ");
 			Console.WriteLine("Press any key to close the Assignment app...");
-			Console.ReadKey();
 		}
 		//method to find if number is self dividing
 		static bool isSelfDividing(int n)
@@ -448,15 +447,30 @@ namespace Assignment1_C.Ezema
 		static string GetWords()
 		{
 			//Ask user for input of Uber, Cool, Uncle
-			Console.WriteLine("Enter Uber, and then press Enter");
-			string uber = Console.ReadLine();
-			Console.WriteLine("Enter Cool, and then press Enter");
-			string cool = Console.ReadLine();
-			Console.WriteLine("Enter Uncle, and then press Enter");
-			string uncle = Console.ReadLine();
-			string texts = string.Format("{0}{1}{2}", uber, cool, uncle);
-			
-			//return string from user
+			//Initialize the string for each
+			string uber = " ";
+			string cool = " ";
+			string uncle = " ";
+			string texts = "";
+
+			//ensure that user enters the correct terms
+			do
+			{
+				Console.WriteLine("Enter Uber, and then press Enter");
+				uber = Console.ReadLine().ToLower();
+
+				Console.WriteLine("Enter cool, and then press Enter");
+				cool = Console.ReadLine().ToLower();
+
+				Console.WriteLine("Enter uncle, and then press Enter");
+				uncle = Console.ReadLine().ToLower();
+			}
+			while (uber != "uber" || cool != "cool" || uncle != "uncle");
+
+			//concatnate string
+			texts = string.Format("{0}{1}{2}", uber, cool, uncle);
+
+			//return concatenated string 
 			return texts;
 		}
 		
@@ -528,10 +542,10 @@ namespace Assignment1_C.Ezema
 				string answer = new String(words.Distinct().ToArray());
 				
 				//set range for distinct numerical values used 8 since there are 8 distinct characters
-				int l = 100000000, r = 999999999;
+				int l = 10000000, r = 999999999;
 
 				//Letting user know code engine is currently processing
-				Console.WriteLine("Processing...");
+				Console.WriteLine("\n\nProcessing...");
 
 				//Get all the unique values between 10000000 and 999999999
 				int[] AlphatoNum = UniqueNumber(l, r);
@@ -562,7 +576,7 @@ namespace Assignment1_C.Ezema
 					{
 						//Display the numbers that make up UBER + COOL = UNCLE
 						Console.WriteLine("\n\nAns: \n\n");
-						Console.Write("\tThe numbers that make up UBER+ COOL = UNCLE are: \n\t"+UBER.ToString()+" + "+ COOL.ToString()+"= " +UNCLE.ToString());
+						Console.Write("\tThe numbers that make up UBER + COOL = UNCLE are: \n\t"+UBER.ToString()+" + "+ COOL.ToString()+"= " +UNCLE.ToString());
 						break;
 					}
 				}
