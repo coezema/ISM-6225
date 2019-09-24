@@ -580,8 +580,8 @@ namespace Assignment1_C.Ezema
 					int [] digits = NumbersIn(element);
 
 					//Assign a value to the unique letters of Uber, Cool, Uncle
-					int U = digits[0];
-					int B = digits[1];
+					int U = digits[1];
+					int B = digits[0];
 					int E = digits[2];
 					int R = digits[3];
 					int C = digits[4];
@@ -600,7 +600,7 @@ namespace Assignment1_C.Ezema
 						//Display the numbers that make up UBER + COOL = UNCLE
 						Console.WriteLine("\n\nAns: \n\n");
 						Console.Write("\tThe numbers that make up UBER + COOL = UNCLE are: \n\t"+UBER.ToString()+" + "+ COOL.ToString()+"= " +UNCLE.ToString());
-						break;
+						
 					}
 				}
 			}
